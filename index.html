@@ -209,26 +209,32 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
     <div class="photo-box" onclick="document.getElementById('photo1').click()">
       <img id="prev1" src="">
       <div class="photo-placeholder">&#128247;</div>
-      <div class="photo-hint">Photo 1 — Click to upload</div>
+      <div class="photo-hint">Click to upload</div>
       <input type="file" id="photo1" accept="image/*" onchange="loadPhoto(this,'prev1')">
     </div>
     <div class="photo-box" onclick="document.getElementById('photo2').click()">
       <img id="prev2" src="">
       <div class="photo-placeholder">&#128247;</div>
-      <div class="photo-hint">Photo 2 — Click to upload</div>
+      <div class="photo-hint">Click to upload</div>
       <input type="file" id="photo2" accept="image/*" onchange="loadPhoto(this,'prev2')">
     </div>
-    <div class="photo-box" style="flex:0.3; min-height:50px; padding:10px 5px;" onclick="document.getElementById('photo3').click()">
-      <img id="prev3" src="">
-      <div class="photo-placeholder" style="font-size:14px; margin-bottom:0;">&#128247;</div>
-      <div class="photo-hint" style="font-size:10px;">Chassis No. — Click to upload</div>
-      <input type="file" id="photo3" accept="image/*" onchange="loadPhoto(this,'prev3')">
+    <div class="photo-container" style="display:flex; flex-direction:column; gap:2px; flex:0.3;">
+      <div style="font-size:12px; font-weight:bold; padding-left:4px;">Engine Number</div>
+      <div class="photo-box" style="min-height:50px; padding:10px 5px;" onclick="document.getElementById('photo3').click()">
+        <img id="prev3" src="">
+        <div class="photo-placeholder" style="font-size:14px; margin-bottom:0;">&#128247;</div>
+        <div class="photo-hint" style="font-size:10px;">Click to upload</div>
+        <input type="file" id="photo3" accept="image/*" onchange="loadPhoto(this,'prev3')">
+      </div>
     </div>
-    <div class="photo-box" style="flex:0.3; min-height:50px; padding:10px 5px;" onclick="document.getElementById('photo4').click()">
-      <img id="prev4" src="">
-      <div class="photo-placeholder" style="font-size:14px; margin-bottom:0;">&#128247;</div>
-      <div class="photo-hint" style="font-size:10px;">Engine No. — Click to upload</div>
-      <input type="file" id="photo4" accept="image/*" onchange="loadPhoto(this,'prev4')">
+    <div class="photo-container" style="display:flex; flex-direction:column; gap:2px; flex:0.3;">
+      <div style="font-size:12px; font-weight:bold; padding-left:4px;">Chassis Number</div>
+      <div class="photo-box" style="min-height:50px; padding:10px 5px;" onclick="document.getElementById('photo4').click()">
+        <img id="prev4" src="">
+        <div class="photo-placeholder" style="font-size:14px; margin-bottom:0;">&#128247;</div>
+        <div class="photo-hint" style="font-size:10px;">Click to upload</div>
+        <input type="file" id="photo4" accept="image/*" onchange="loadPhoto(this,'prev4')">
+      </div>
     </div>
   </div>
 </div>
@@ -573,9 +579,15 @@ window.addEventListener('beforeprint', function() {
   // 4. Hide empty photo boxes
   document.querySelectorAll('.photo-box').forEach(function(box) {
     var img = box.querySelector('img');
-    if (!img.src || !img.src.startsWith('data:image')) {
-      box.dataset.printHidden = '1';
-      box.style.display = 'none';
+    if (!img || !img.src || !img.src.startsWith('data:image')) {
+      var container = box.closest('.photo-container');
+      if (container) {
+        container.dataset.printHidden = '1';
+        container.style.display = 'none';
+      } else {
+        box.dataset.printHidden = '1';
+        box.style.display = 'none';
+      }
     }
   });
 });
