@@ -218,19 +218,17 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
       <div class="photo-hint">Photo 2 — Click to upload</div>
       <input type="file" id="photo2" accept="image/*" onchange="loadPhoto(this,'prev2')">
     </div>
-    <div style="display:flex; gap:4px; flex:0.6; min-height:80px;">
-      <div class="photo-box" onclick="document.getElementById('photo3').click()">
-        <img id="prev3" src="">
-        <div class="photo-placeholder" style="font-size:14px;">&#128247;</div>
-        <div class="photo-hint">Chassis No. — Click to upload</div>
-        <input type="file" id="photo3" accept="image/*" onchange="loadPhoto(this,'prev3')">
-      </div>
-      <div class="photo-box" onclick="document.getElementById('photo4').click()">
-        <img id="prev4" src="">
-        <div class="photo-placeholder" style="font-size:14px;">&#128247;</div>
-        <div class="photo-hint">Engine No. — Click to upload</div>
-        <input type="file" id="photo4" accept="image/*" onchange="loadPhoto(this,'prev4')">
-      </div>
+    <div class="photo-box" style="flex:0.3; min-height:50px; padding:10px 5px;" onclick="document.getElementById('photo3').click()">
+      <img id="prev3" src="">
+      <div class="photo-placeholder" style="font-size:14px; margin-bottom:0;">&#128247;</div>
+      <div class="photo-hint" style="font-size:10px;">Chassis No. — Click to upload</div>
+      <input type="file" id="photo3" accept="image/*" onchange="loadPhoto(this,'prev3')">
+    </div>
+    <div class="photo-box" style="flex:0.3; min-height:50px; padding:10px 5px;" onclick="document.getElementById('photo4').click()">
+      <img id="prev4" src="">
+      <div class="photo-placeholder" style="font-size:14px; margin-bottom:0;">&#128247;</div>
+      <div class="photo-hint" style="font-size:10px;">Engine No. — Click to upload</div>
+      <input type="file" id="photo4" accept="image/*" onchange="loadPhoto(this,'prev4')">
     </div>
   </div>
 </div>
