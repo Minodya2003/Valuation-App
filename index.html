@@ -422,12 +422,39 @@ function loadPhoto(input, imgId) {
   if (!file) return;
   var reader = new FileReader();
   reader.onload = function(e) {
-    var img = document.getElementById(imgId);
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      var MAX_WIDTH = 800;
+      var MAX_HEIGHT = 800;
+      var width = img.width;
+      var height = img.height;
+      
+      if (width > height) {
+        if (width > MAX_WIDTH) {
+          height *= MAX_WIDTH / width;
+          width = MAX_WIDTH;
+        }
+      } else {
+        if (height > MAX_HEIGHT) {
+          width *= MAX_HEIGHT / height;
+          height = MAX_HEIGHT;
+        }
+      }
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
+      var dataurl = canvas.toDataURL('image/jpeg', 0.8);
+      
+      var targetImg = document.getElementById(imgId);
+      targetImg.src = dataurl;
+      targetImg.style.display = 'block';
+      targetImg.parentNode.querySelector('.photo-placeholder').style.display = 'none';
+      targetImg.parentNode.querySelector('.photo-hint').style.display = 'none';
+      try { localStorage.setItem(imgId, dataurl); } catch(x) { console.error('Storage full'); }
+    }
     img.src = e.target.result;
-    img.style.display = 'block';
-    img.parentNode.querySelector('.photo-placeholder').style.display = 'none';
-    img.parentNode.querySelector('.photo-hint').style.display = 'none';
-    try { localStorage.setItem(imgId, e.target.result); } catch(x) {}
   };
   reader.readAsDataURL(file);
 }
@@ -509,7 +536,12 @@ window.addEventListener('beforeprint', function() {
     if (inp.type === 'file' || inp.type === 'checkbox' || inp.type === 'radio' || inp.type === 'button' || inp.type === 'submit') return;
     var span = document.createElement('span');
     span.className = PRINT_SPAN_CLASS;
-    span.textContent = inp.value || '';
+    var val = inp.value || '';
+    if (inp.type === 'date' && val) {
+      var parts = val.split('-');
+      if (parts.length === 3) val = parts[2] + '/' + parts[1] + '/' + parts[0];
+    }
+    span.textContent = val;
     // Preserve approximate width and font-weight so layout doesn't collapse
     var w = inp.offsetWidth;
     var fw = inp.style.fontWeight || window.getComputedStyle(inp).fontWeight || 'normal';
@@ -534,7 +566,7 @@ window.addEventListener('beforeprint', function() {
   // 4. Hide empty photo boxes
   document.querySelectorAll('.photo-box').forEach(function(box) {
     var img = box.querySelector('img');
-    if (!img.src || img.src === window.location.href || img.style.display === 'none' || img.src === '') {
+    if (!img.src || !img.src.startsWith('data:image')) {
       box.dataset.printHidden = '1';
       box.style.display = 'none';
     }
