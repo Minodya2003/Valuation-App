@@ -218,11 +218,19 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
       <div class="photo-hint">Photo 2 — Click to upload</div>
       <input type="file" id="photo2" accept="image/*" onchange="loadPhoto(this,'prev2')">
     </div>
-    <div class="photo-box" style="flex:0.6; min-height:80px;" onclick="document.getElementById('photo3').click()">
-      <img id="prev3" src="">
-      <div class="photo-placeholder" style="font-size:14px;">&#128247;</div>
-      <div class="photo-hint">Chassis Number — Click to upload</div>
-      <input type="file" id="photo3" accept="image/*" onchange="loadPhoto(this,'prev3')">
+    <div style="display:flex; gap:4px; flex:0.6; min-height:80px;">
+      <div class="photo-box" onclick="document.getElementById('photo3').click()">
+        <img id="prev3" src="">
+        <div class="photo-placeholder" style="font-size:14px;">&#128247;</div>
+        <div class="photo-hint">Chassis No. — Click to upload</div>
+        <input type="file" id="photo3" accept="image/*" onchange="loadPhoto(this,'prev3')">
+      </div>
+      <div class="photo-box" onclick="document.getElementById('photo4').click()">
+        <img id="prev4" src="">
+        <div class="photo-placeholder" style="font-size:14px;">&#128247;</div>
+        <div class="photo-hint">Engine No. — Click to upload</div>
+        <input type="file" id="photo4" accept="image/*" onchange="loadPhoto(this,'prev4')">
+      </div>
     </div>
   </div>
 </div>
@@ -465,6 +473,7 @@ function resetForm() {
     localStorage.removeItem('prev1');
     localStorage.removeItem('prev2');
     localStorage.removeItem('prev3');
+    localStorage.removeItem('prev4');
     location.reload();
   }
 }
@@ -496,7 +505,7 @@ var draft = localStorage.getItem('valDraft');
 
   }
 
-  ['prev1','prev2','prev3'].forEach(function(id){
+  ['prev1','prev2','prev3','prev4'].forEach(function(id){
     var src = localStorage.getItem(id);
     if(src){
       var img = document.getElementById(id);
