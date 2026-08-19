@@ -530,6 +530,15 @@ window.addEventListener('beforeprint', function() {
     ta.style.display = 'none';
     ta.parentNode.insertBefore(span, ta.nextSibling);
   });
+
+  // 4. Hide empty photo boxes
+  document.querySelectorAll('.photo-box').forEach(function(box) {
+    var img = box.querySelector('img');
+    if (!img.src || img.src === window.location.href || img.style.display === 'none' || img.src === '') {
+      box.dataset.printHidden = '1';
+      box.style.display = 'none';
+    }
+  });
 });
 
 window.addEventListener('afterprint', function() {
