@@ -173,7 +173,7 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
 <div class="sec1-wrap">
   <div class="sec1-table-wrap">
     <table class="sec1-table">
-      <tr><td class="lbl">1.1 Make</td><td class="colon">:</td><td class="val"><input type="text" name="make" value=""></td></tr>
+      <tr><td class="lbl">1.1 Make</td><td class="colon">:</td><td class="val"><input type="text" name="make" value="" list="make_list" placeholder="Select or type..."><datalist id="make_list"><option value="Mitsubishi"><option value="Toyota"><option value="Isuzu"><option value="Nissan"><option value="Mazda"><option value="KIA"><option value="Peugeot"><option value="Perodua"><option value="Honda"><option value="Suzuki"><option value="Hyundai"><option value="Ford"><option value="BMW"><option value="Mercedes-Benz"><option value="Volkswagen"></datalist></td></tr>
       <tr><td class="lbl">1.2 Model</td><td class="colon">:</td><td class="val"><input type="text" name="model" value=""></td></tr>
       <tr><td class="lbl">1.3 Classification</td><td class="colon">:</td><td class="val"><input type="text" name="classification" list="classification_list" value=""><datalist id="classification_list"><option value="Motor Coach"><option value="Bus"><option value="Car"><option value="Van"><option value="Truck"><option value="Motorcycle"><option value="Excavator"><option value="Machinery"></datalist></td></tr>
       <tr><td class="lbl">1.4 Country of Origin</td><td class="colon">:</td><td class="val"><input type="text" name="origin" value=""></td></tr>
@@ -182,13 +182,13 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
       <tr><td class="lbl">1.7 Registration no</td><td class="colon">:</td><td class="val"><input type="text" name="reg" value=""></td></tr>
       <tr><td class="lbl">1.8 Date of Registration</td><td class="colon">:</td><td class="val"><input type="date" name="regdate" value=""></td></tr>
       <tr><td class="lbl">1.9 Engine No</td><td class="colon">:</td><td class="val"><input type="text" name="engineNo" value=""></td></tr>
-      <tr><td class="lbl">1.10 Fuel System</td><td class="colon">:</td><td class="val"><input type="text" name="fuelSystem" list="fuelSystem_list" value=""><datalist id="fuelSystem_list"><option value="Deisel - IDI"><option value="Diesel - DI"><option value="Petrol"><option value="Common Rail Diesel"></datalist></td></tr>
-      <tr><td class="lbl">1.11 Engine Capacity</td><td class="colon">:</td><td class="val"><input type="number" name="capacity" value=""></td></tr>
+      <tr><td class="lbl">1.10 Fuel System</td><td class="colon">:</td><td class="val"><input type="text" name="fuelSystem" list="fuelSystem_list" value=""><datalist id="fuelSystem_list"><option value="Deisel - IDI"><option value="Diesel - DI"><option value="Petrol"><option value="Common Rail Diesel"><option value="Hybrid"><option value="Electric"><option value="Plug-in Hybrid"></datalist></td></tr>
+      <tr><td class="lbl">1.11 Engine Capacity</td><td class="colon">:</td><td class="val"><span style="display:flex;align-items:center;gap:4px"><input type="number" name="capacity" value="" placeholder="e.g. 2500" style="flex:1"><span style="font-size:12px;color:#555;white-space:nowrap">CC</span></span></td></tr>
       <tr><td class="lbl">1.12 Chassis No</td><td class="colon">:</td><td class="val"><input type="text" name="chassis" value=""></td></tr>
       <tr><td class="lbl">1.13 Type of fuel</td><td class="colon">:</td><td class="val"><input type="text" name="fuel" list="fuel_list" value=""><datalist id="fuel_list"><option value="Deisel"><option value="Petrol"><option value="Hybrid"><option value="Electric"></datalist></td></tr>
       <tr><td class="lbl">1.14 If Converted Date &amp; type</td><td class="colon">:</td><td class="val"><input type="text" name="converted" value=""></td></tr>
       <tr><td class="lbl">1.15 Switch Key no</td><td class="colon">:</td><td class="val"><input type="text" name="key" value=""></td></tr>
-      <tr><td class="lbl">1.16 Meter reading</td><td class="colon">:</td><td class="val"><input type="number" name="meter" value=""></td></tr>
+      <tr><td class="lbl">1.16 Meter reading</td><td class="colon">:</td><td class="val"><span style="display:flex;align-items:center;gap:4px"><input type="number" name="meter" value="" placeholder="e.g. 195500" style="flex:1"><span style="font-size:12px;color:#555;white-space:nowrap">Km</span></span></td></tr>
       <tr><td class="lbl">1.17 Num. of Prev. Owners</td><td class="colon">:</td><td class="val"><input type="number" name="owners" value=""></td></tr>
       <tr><td class="lbl">1.18 Importers</td><td class="colon">:</td><td class="val"><input type="text" name="importers" value=""></td></tr>
       <tr><td class="lbl">1.19 Date of Import</td><td class="colon">:</td><td class="val"><input type="date" name="importDate" value=""></td></tr>
@@ -196,7 +196,7 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
       <tr><td class="lbl">1.21 Colors</td><td class="colon">:</td><td class="val"><input type="text" name="colors" value=""></td></tr>
       <tr><td class="lbl">1.22 Just Low</td><td class="colon">:</td><td class="val"><select name="low"><option value="" selected>-- Select --</option><option>Yes</option><option>No</option></select></td></tr>
       <tr><td class="lbl">1.23 Seating Capacities</td><td class="colon">:</td><td class="val"><input type="number" name="seats" value=""></td></tr>
-      <tr><td class="lbl">1.24 Weight</td><td class="colon">:</td><td class="val"><input type="number" name="weight" value=""></td></tr>
+      <tr><td class="lbl">1.24 Weight</td><td class="colon">:</td><td class="val"><span style="display:flex;align-items:center;gap:4px"><input type="number" name="weight" value="" placeholder="e.g. 1800" style="flex:1"><span style="font-size:12px;color:#555;white-space:nowrap">Kg</span></span></td></tr>
       <tr><td class="lbl">1.25 4x4 Wheel Drive</td><td class="colon">:</td><td class="val"><select name="fourx4"><option value="" selected>-- Select --</option><option>Yes</option><option>No</option></select></td></tr>
       <tr><td class="lbl">1.26 Current Owner</td><td class="colon">:</td><td class="val"><input type="text" name="owner" value=""></td></tr>
       <tr><td class="lbl">1.27 Extra Option</td><td class="colon">:</td><td class="val"><input type="text" name="extra" value=""></td></tr>
@@ -335,9 +335,9 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
     <div class="sub-sec">
       <div class="sub-sec-label">4.9 Tires <span style="float:right;font-weight:normal">4.9.1 Wheel</span></div>
       <table class="sub-table">
-        <tr><td>4.9.1</td><td>Font Size</td><td><input type="text" name="tyre1size" value="" style="width:55px"></td><td><input type="text" name="tyre1wheel" value="" style="width:25px"></td></tr>
-        <tr><td>4.9.2</td><td>Font Size</td><td><input type="text" name="tyre2size" value="" style="width:55px"></td><td><input type="text" name="tyre2wheel" value="" style="width:25px"></td></tr>
-        <tr><td>4.9.3</td><td>Font Size</td><td><input type="text" name="tyre3size" value="" style="width:55px"></td><td><input type="text" name="tyre3wheel" value="" style="width:25px"></td></tr>
+        <tr><td>4.9.1</td><td>Rear Size</td><td><input type="text" id="tyre1size" name="tyre1size" value="" style="width:55px" oninput="syncRearTyres()"></td><td><input type="text" name="tyre1wheel" value="" style="width:25px"></td></tr>
+        <tr><td>4.9.2</td><td>Rear Size</td><td><input type="text" id="tyre2size" name="tyre2size" value="" style="width:55px" placeholder="auto"></td><td><input type="text" name="tyre2wheel" value="" style="width:25px"></td></tr>
+        <tr><td>4.9.3</td><td>Rear Size</td><td><input type="text" id="tyre3size" name="tyre3size" value="" style="width:55px" placeholder="auto"></td><td><input type="text" name="tyre3wheel" value="" style="width:25px"></td></tr>
       </table>
     </div>
     <div class="sub-sec">
@@ -401,7 +401,7 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
   <div style="margin-bottom:12px;display:flex;align-items:flex-start;flex-wrap:wrap;gap:4px">
     <div style="width:190px;font-weight:bold;padding-top:3px">7.0 Market Value</div>
     <div style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:4px;flex:1">
-      <div style="display:flex;align-items:center;gap:4px;padding-top:2px">: Rs. <input type="number" name="market" value="" style="width:130px;font-size:13px;font-weight:bold;border:0;border-bottom:1px solid #aaa;background:transparent"></div>
+      <div style="display:flex;align-items:center;gap:4px;padding-top:2px">: Rs. <input type="text" name="market" value="" placeholder="0.00" inputmode="decimal" style="width:150px;font-size:13px;font-weight:bold;border:0;border-bottom:1px solid #aaa;background:transparent" oninput="formatCurrencyInput(this)" onkeypress="return /[0-9.]/.test(event.key)"></div>
       <div style="display:flex;align-items:flex-start;flex:1;min-width:280px;gap:2px">
         <span style="padding-top:3px">(</span>
         <textarea name="marketWords" style="flex:1;font-size:13px;font-weight:bold;border:0;border-bottom:1px solid #aaa;background:transparent;resize:none;height:36px;overflow:hidden;padding:2px 4px;font-family:Arial,sans-serif;line-height:1.2" rows="2"></textarea>
@@ -412,7 +412,7 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
   <div style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:4px">
     <div style="width:190px;font-weight:bold;padding-top:3px">8.0 Forced Sale Value</div>
     <div style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:4px;flex:1">
-      <div style="display:flex;align-items:center;gap:4px;padding-top:2px">: Rs. <input type="number" name="forced" value="" style="width:130px;font-size:13px;font-weight:bold;border:0;border-bottom:1px solid #aaa;background:transparent"></div>
+      <div style="display:flex;align-items:center;gap:4px;padding-top:2px">: Rs. <input type="text" name="forced" value="" placeholder="0.00" inputmode="decimal" style="width:150px;font-size:13px;font-weight:bold;border:0;border-bottom:1px solid #aaa;background:transparent" oninput="formatCurrencyInput(this)" onkeypress="return /[0-9.]/.test(event.key)"></div>
       <div style="display:flex;align-items:flex-start;flex:1;min-width:280px;gap:2px">
         <span style="padding-top:3px">(</span>
         <textarea name="forcedWords" style="flex:1;font-size:13px;font-weight:bold;border:0;border-bottom:1px solid #aaa;background:transparent;resize:none;height:36px;overflow:hidden;padding:2px 4px;font-family:Arial,sans-serif;line-height:1.2" rows="2"></textarea>
@@ -641,12 +641,36 @@ function numToWords(number) {
     return words.trim() + ' Rupees Only';
 }
 
-document.querySelector('[name="market"]').addEventListener('input', function(e) {
-    document.querySelector('[name="marketWords"]').value = numToWords(e.target.value);
-});
+// Currency input: digits + dot allowed, live comma formatting on integer part
+function formatCurrencyInput(inp) {
+  var pos = inp.selectionStart;
+  var oldLen = inp.value.length;
+  // Allow only digits and ONE dot
+  var raw = inp.value.replace(/[^0-9.]/g, '');
+  // Prevent multiple dots
+  var parts = raw.split('.');
+  if (parts.length > 2) raw = parts[0] + '.' + parts.slice(1).join('');
+  // Format integer part with commas
+  var intPart = parts[0].replace(/[^0-9]/g, '');
+  var decPart = parts.length > 1 ? '.' + parts[1].replace(/[^0-9]/g, '') : '';
+  var formatted = intPart === '' ? '' : parseInt(intPart, 10).toLocaleString('en-US');
+  inp.value = formatted + decPart;
+  // Adjust cursor
+  var newLen = inp.value.length;
+  inp.selectionStart = inp.selectionEnd = pos + (newLen - oldLen);
+  // Update words (integer part only)
+  var num = parseInt(intPart, 10) || 0;
+  if (inp.name === 'market') document.querySelector('[name="marketWords"]').value = intPart ? numToWords(num) : '';
+  if (inp.name === 'forced') document.querySelector('[name="forcedWords"]').value = intPart ? numToWords(num) : '';
+}
 
-document.querySelector('[name="forced"]').addEventListener('input', function(e) {
-    document.querySelector('[name="forcedWords"]').value = numToWords(e.target.value);
-});
+// Sync rear tyre sizes from front tyre size
+function syncRearTyres() {
+  var frontVal = document.getElementById('tyre1size').value;
+  var rear2 = document.getElementById('tyre2size');
+  var rear3 = document.getElementById('tyre3size');
+  if (rear2 && rear2.value === '') rear2.value = frontVal;
+  if (rear3 && rear3.value === '') rear3.value = frontVal;
+}
 </script>
 </body></html>
