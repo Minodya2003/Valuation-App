@@ -76,6 +76,32 @@ button{padding:9px 13px;border:0;border-radius:5px;font-weight:bold;cursor:point
 input[type=text],input[type=number],input[type=date],select,textarea{font-size:13px;border:0;border-bottom:1px solid #bbb;padding:3px 4px;background:#fff;width:100%}
 select{background:#fff}
 textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
+/* === SEALS SECTION === */
+.seals-section{margin-top:14px}
+.seals-row{display:flex;justify-content:space-between;align-items:flex-end;padding:0 15px}
+.seal-col{display:flex;flex-direction:column;align-items:center}
+.seal-header{font-size:11.5px;font-weight:bold;color:#333;margin-bottom:5px}
+.seal-dim{font-size:10px;font-weight:normal;color:#777}
+.seal-box{width:2in;border:1.5px dashed #777;background:#fafafa;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;box-sizing:border-box;overflow:hidden;border-radius:3px;transition:all 0.2s ease}
+.seal-box:hover{border-color:#26743a;background:#f4fbf5}
+.seal-proprietor{height:0.6in}
+.seal-valuer{height:1in}
+.seal-box.has-image{border:1px solid #ccc;background:#fff}
+.seal-img{width:100%;height:100%;object-fit:contain;display:none}
+.seal-placeholder{text-align:center;padding:2px 4px;user-select:none;pointer-events:none}
+.seal-ph-icon{font-size:14px;line-height:1}
+.seal-ph-text{font-size:10.5px;font-weight:bold;color:#333;margin-top:2px}
+.seal-ph-sub{font-size:8.5px;color:#777}
+.seal-actions{display:flex;gap:5px;margin-top:5px}
+.seal-btn{padding:2px 8px;font-size:10px;border-radius:3px;border:1px solid #bbb;background:#fff;cursor:pointer}
+.seal-btn:hover{background:#f0f0f0}
+.seal-btn-danger{color:#c00;border-color:#fcc}
+.seal-btn-danger:hover{background:#fee}
+.seal-screen-opts{display:flex;flex-direction:column;align-items:center;padding-bottom:8px}
+.seal-opt-label{display:flex;align-items:center;gap:6px;cursor:pointer;background:#f5f5f5;padding:5px 10px;border-radius:4px;border:1px solid #ddd;font-size:11px;color:#444}
+.seal-opt-hint{font-size:9.5px;color:#888;margin-top:4px;text-align:center}
+.seal-print-sub{display:none}
+
 @media print{
   @page { margin: 0; size: A4 portrait; }
   body{background:#fff;font-size:11px;margin:0;}
@@ -109,7 +135,18 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
   .sign-area{height:35px;margin-top:10px}
   input,select,textarea{font-size:13px}
   textarea{height:32px}
-  .final-vals{margin-bottom:15px !important}
+  .final-vals{margin-bottom:10px !important}
+  /* Seals in print */
+  .seals-section{margin-top:8px !important}
+  .seals-row{display:flex !important;justify-content:space-between !important;align-items:flex-end !important;padding:0 10px !important}
+  .seal-header,.seal-screen-opts,.seal-actions,.seal-placeholder,.seal-print-sub{display:none !important}
+  .seal-box{width:2in !important;background:transparent !important;box-sizing:border-box !important;border-radius:0 !important}
+  .seal-proprietor{height:0.6in !important}
+  .seal-valuer{height:1in !important}
+  .seal-box.has-image{border:none !important}
+  .seal-box:not(.has-image){border:1px solid #111 !important}
+  .seal-box.no-print-border:not(.has-image){border:1px solid transparent !important}
+  .seal-img{display:block !important;width:100% !important;height:100% !important;object-fit:contain !important}
   select{
     -webkit-appearance:none !important;
     -moz-appearance:none !important;
@@ -152,6 +189,8 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
   .sec1-table .val { width: 60%; }
   input[type=text], input[type=number], input[type=date], select, textarea { font-size: 14px; padding: 6px; }
   h1 { font-size: 13px; }
+  .seals-row { flex-direction: column !important; align-items: center !important; gap: 15px !important; }
+  .seal-screen-opts { order: 3; }
 }
 </style></head><body>
 
@@ -400,7 +439,7 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
 <div class="decl-p" style="font-size:13px;margin:5px 0;line-height:1.5">I hereby confirm that the information stated is correct as per inspection made by me and to the best of my knowledge.<br>Also have given the above valuation after considering all relevant factors, which affect that value of the vehicle to the best of my expertise and knowledge.</div>
 <div style="height:20px;border-bottom:1px solid #999;margin:4px 0 4px;width:200px"></div>
 
-<div class="final-vals" style="margin-top:8px;font-size:14px;margin-bottom:60px">
+<div class="final-vals" style="margin-top:8px;font-size:14px;margin-bottom:14px">
   <div style="background-color:skyblue; color:black; padding: 6px; border-radius: 2px; -webkit-print-color-adjust: exact; print-color-adjust: exact;">
     <div style="margin-bottom:12px;display:flex;align-items:flex-start;flex-wrap:wrap;gap:4px">
       <div style="width:190px;font-weight:bold;padding-top:3px">7.0 Market Value</div>
@@ -427,6 +466,58 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
   </div>
 </div>
 
+<!-- === SEALS SECTION === -->
+<div class="seals-section">
+  <div class="seals-row">
+    <!-- Left Seal: Proprietor -->
+    <div class="seal-col">
+      <div class="seal-header">Proprietor Seal <span class="seal-dim">(2" &times; 1/2")</span></div>
+      <div class="seal-box seal-proprietor" id="boxProprietor" onclick="triggerSealUpload('sealProprietorInput')" title="Click to upload Proprietor Seal or leave blank to stamp physically">
+        <img id="sealProprietorImg" class="seal-img" alt="Proprietor Seal">
+        <div class="seal-placeholder" id="placeholderProprietor">
+          <div class="seal-ph-icon">📷</div>
+          <div class="seal-ph-text">Upload Seal</div>
+          <div class="seal-ph-sub">(2" &times; 1/2" or stamp physically)</div>
+        </div>
+      </div>
+      <div class="seal-actions" id="actionsProprietor">
+        <button type="button" class="seal-btn" onclick="triggerSealUpload('sealProprietorInput')">Change</button>
+        <button type="button" class="seal-btn seal-btn-danger" onclick="clearSeal('valSealProprietor', 'sealProprietorImg', 'placeholderProprietor', 'actionsProprietor', event)">Clear</button>
+      </div>
+      <input type="file" id="sealProprietorInput" accept="image/*" style="display:none;" onchange="loadSealImage(this, 'sealProprietorImg', 'placeholderProprietor', 'actionsProprietor', 'valSealProprietor')">
+      <div class="seal-print-sub">Proprietor</div>
+    </div>
+
+    <!-- Center: Options (Screen Only) -->
+    <div class="seal-screen-opts">
+      <label class="seal-opt-label">
+        <input type="checkbox" id="sealBorderPrintToggle" checked onchange="toggleSealBorderPrint(this.checked)">
+        <span>Print box border for physical stamps</span>
+      </label>
+      <div class="seal-opt-hint">Upload image OR leave blank to stamp physically</div>
+    </div>
+
+    <!-- Right Seal: Valuer -->
+    <div class="seal-col">
+      <div class="seal-header">Valuer Seal <span class="seal-dim">(2" &times; 1")</span></div>
+      <div class="seal-box seal-valuer" id="boxValuer" onclick="triggerSealUpload('sealValuerInput')" title="Click to upload Valuer Seal or leave blank to stamp physically">
+        <img id="sealValuerImg" class="seal-img" alt="Valuer Seal">
+        <div class="seal-placeholder" id="placeholderValuer">
+          <div class="seal-ph-icon">📷</div>
+          <div class="seal-ph-text">Upload Seal</div>
+          <div class="seal-ph-sub">(2" &times; 1" or stamp physically)</div>
+        </div>
+      </div>
+      <div class="seal-actions" id="actionsValuer">
+        <button type="button" class="seal-btn" onclick="triggerSealUpload('sealValuerInput')">Change</button>
+        <button type="button" class="seal-btn seal-btn-danger" onclick="clearSeal('valSealValuer', 'sealValuerImg', 'placeholderValuer', 'actionsValuer', event)">Clear</button>
+      </div>
+      <input type="file" id="sealValuerInput" accept="image/*" style="display:none;" onchange="loadSealImage(this, 'sealValuerImg', 'placeholderValuer', 'actionsValuer', 'valSealValuer')">
+      <div class="seal-print-sub">Valuer of the Motor Vehicle</div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <div class="actions">
@@ -436,6 +527,86 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
 </div>
 
 <script>
+function loadSealImage(input, imgId, phId, actId, storageKey) {
+  var file = input.files && input.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var dataUrl = e.target.result;
+    applySeal(dataUrl, imgId, phId, actId, storageKey, true);
+  };
+  reader.readAsDataURL(file);
+}
+
+function applySeal(dataUrl, imgId, phId, actId, storageKey, save) {
+  var img = document.getElementById(imgId);
+  var ph = document.getElementById(phId);
+  var act = document.getElementById(actId);
+  var box = img ? img.closest('.seal-box') : null;
+  
+  if (img) {
+    img.src = dataUrl;
+    img.style.display = 'block';
+  }
+  if (ph) ph.style.display = 'none';
+  if (act) act.style.display = 'flex';
+  if (box) box.classList.add('has-image');
+  
+  if (save && storageKey) {
+    try {
+      localStorage.setItem(storageKey, dataUrl);
+    } catch(e) {
+      console.warn('Storage full for seal image', e);
+    }
+  }
+}
+
+function clearSeal(storageKey, imgId, phId, actId, ev) {
+  if (ev) ev.stopPropagation();
+  var img = document.getElementById(imgId);
+  var ph = document.getElementById(phId);
+  var act = document.getElementById(actId);
+  var box = img ? img.closest('.seal-box') : null;
+  
+  if (img) {
+    img.removeAttribute('src');
+    img.style.display = 'none';
+  }
+  if (ph) ph.style.display = '';
+  if (act) act.style.display = 'none';
+  if (box) box.classList.remove('has-image');
+  
+  if (storageKey) {
+    localStorage.removeItem(storageKey);
+    if (storageKey === 'valSealProprietor') {
+      var pInp = document.getElementById('sealProprietorInput');
+      if (pInp) pInp.value = '';
+    } else if (storageKey === 'valSealValuer') {
+      var vInp = document.getElementById('sealValuerInput');
+      if (vInp) vInp.value = '';
+    }
+  }
+}
+
+function triggerSealUpload(inputId) {
+  var el = document.getElementById(inputId);
+  if (el) el.click();
+}
+
+function toggleSealBorderPrint(checked) {
+  var b1 = document.getElementById('boxProprietor');
+  var b2 = document.getElementById('boxValuer');
+  if (checked) {
+    if (b1) b1.classList.remove('no-print-border');
+    if (b2) b2.classList.remove('no-print-border');
+    localStorage.setItem('valSealBorderPrint', '1');
+  } else {
+    if (b1) b1.classList.add('no-print-border');
+    if (b2) b2.classList.add('no-print-border');
+    localStorage.setItem('valSealBorderPrint', '0');
+  }
+}
+
 function loadPhoto(input, imgId) {
   var file = input.files[0];
   if (!file) return;
@@ -530,6 +701,25 @@ var draft = localStorage.getItem('valDraft');
   if(regEl && pg2){
     pg2.textContent = regEl.value;
     regEl.addEventListener('input', function(){ pg2.textContent = regEl.value; });
+  }
+
+  // Load saved seals
+  var sProp = localStorage.getItem('valSealProprietor');
+  if (sProp) {
+    applySeal(sProp, 'sealProprietorImg', 'placeholderProprietor', 'actionsProprietor', 'valSealProprietor', false);
+  }
+  var sVal = localStorage.getItem('valSealValuer');
+  if (sVal) {
+    applySeal(sVal, 'sealValuerImg', 'placeholderValuer', 'actionsValuer', 'valSealValuer', false);
+  }
+  var borderPref = localStorage.getItem('valSealBorderPrint');
+  var borderCb = document.getElementById('sealBorderPrintToggle');
+  if (borderPref === '0') {
+    if (borderCb) borderCb.checked = false;
+    toggleSealBorderPrint(false);
+  } else {
+    if (borderCb) borderCb.checked = true;
+    toggleSealBorderPrint(true);
   }
 };
 </script>
