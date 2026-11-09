@@ -105,7 +105,8 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
 @media print{
   @page { margin: 0; size: A4 portrait; }
   body{background:#fff;font-size:11px;margin:0;}
-  .page{margin:0;box-shadow:none;padding:2mm 5mm 0mm 5mm;height:296mm;width:210mm;box-sizing:border-box;overflow:hidden;page-break-after:always;break-after:page;}
+  .page{margin:0;box-shadow:none;padding:2mm 5mm 0mm 5mm;height:295mm;max-height:295mm;width:210mm;box-sizing:border-box;overflow:hidden;page-break-after:always;break-after:page;}
+  .page:last-child,.page:last-of-type{page-break-after:avoid !important;break-after:avoid !important;}
   .actions{display:none}
   .company-name{font-size:19px}
   .company-sub{font-size:11px}
@@ -122,22 +123,22 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
   .sec1-table td{padding:3px 4px}
   .road-section{font-size:12px;margin-top:4px}
   .road-line{margin-bottom:3px}
-  .tech-head{font-size:15px;margin:7px 0 5px}
+  .tech-head{font-size:15px;margin:6px 0 4px}
   .tech-two-col{gap:12px}
-  .sub-sec{margin-bottom:8px}
+  .sub-sec{margin-bottom:6px}
   .sub-sec-label{font-size:13px;margin-bottom:2px;font-weight:bold}
   .sub-table{font-size:13px}
   .sub-table td,.sub-table th{padding:3px 4px;border:1px solid #333}
   .inline-vals{font-size:13px;margin-bottom:3px}
-  .decl-head{font-size:15px;margin:8px 0 5px}
-  .decl-p{font-size:13px;margin:4px 0;line-height:1.4}
-  .decl-row{margin-top:12px;font-size:13px}
+  .decl-head{font-size:15px;margin:6px 0 3px}
+  .decl-p{font-size:13px;margin:3px 0;line-height:1.35}
+  .decl-row{margin-top:8px;font-size:13px}
   .sign-area{height:35px;margin-top:10px}
   input,select,textarea{font-size:13px}
   textarea{height:32px}
-  .final-vals{margin-bottom:10px !important}
+  .final-vals{margin-bottom:6px !important}
   /* Seals in print */
-  .seals-section{margin-top:8px !important}
+  .seals-section{margin-top:6px !important}
   .seals-row{display:flex !important;justify-content:space-between !important;align-items:flex-end !important;padding:0 10px !important}
   .seal-header,.seal-screen-opts,.seal-actions,.seal-placeholder,.seal-print-sub{display:none !important}
   .seal-box{width:2in !important;background:transparent !important;box-sizing:border-box !important;border-radius:0 !important}
@@ -146,7 +147,9 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
   .seal-box.has-image{border:none !important}
   .seal-box:not(.has-image){border:1px solid #111 !important}
   .seal-box.no-print-border:not(.has-image){border:1px solid transparent !important}
-  .seal-img{display:block !important;width:100% !important;height:100% !important;object-fit:contain !important}
+  .seal-box.has-image .seal-img{display:block !important;width:100% !important;height:100% !important;object-fit:contain !important}
+  .seal-box:not(.has-image) .seal-img{display:none !important}
+  .seal-img:not([src]),.seal-img[src=""]{display:none !important}
   select{
     -webkit-appearance:none !important;
     -moz-appearance:none !important;
@@ -473,7 +476,7 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
     <div class="seal-col">
       <div class="seal-header">Proprietor Seal <span class="seal-dim">(2" &times; 1/2")</span></div>
       <div class="seal-box seal-proprietor" id="boxProprietor" onclick="triggerSealUpload('sealProprietorInput')" title="Click to upload Proprietor Seal or leave blank to stamp physically">
-        <img id="sealProprietorImg" class="seal-img" alt="Proprietor Seal">
+        <img id="sealProprietorImg" class="seal-img" alt="" style="display:none">
         <div class="seal-placeholder" id="placeholderProprietor">
           <div class="seal-ph-icon">📷</div>
           <div class="seal-ph-text">Upload Seal</div>
@@ -501,7 +504,7 @@ textarea{border:1px solid #bbb;resize:none;height:36px;width:100%}
     <div class="seal-col">
       <div class="seal-header">Valuer Seal <span class="seal-dim">(2" &times; 1")</span></div>
       <div class="seal-box seal-valuer" id="boxValuer" onclick="triggerSealUpload('sealValuerInput')" title="Click to upload Valuer Seal or leave blank to stamp physically">
-        <img id="sealValuerImg" class="seal-img" alt="Valuer Seal">
+        <img id="sealValuerImg" class="seal-img" alt="" style="display:none">
         <div class="seal-placeholder" id="placeholderValuer">
           <div class="seal-ph-icon">📷</div>
           <div class="seal-ph-text">Upload Seal</div>
